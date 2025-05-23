@@ -5,6 +5,8 @@ import App1 from "./components/App1";
 import App2 from "./components/App2";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import './Header.css';
+
 import "./App.css";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 function App() {
