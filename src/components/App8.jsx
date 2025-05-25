@@ -12,7 +12,7 @@ export default function App8() {
       <h2>useState Revision</h2>
       <h3>{count}</h3>
       <p>
-        <button onClick={increment}>Click</button>
+        <button onClick={increment}>Clicks</button>
       </p>
     </div>
   );
