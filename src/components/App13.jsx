@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./App13.css";
 
 export default function App13() {
   const [num, setNum] = useState(0);
@@ -8,27 +9,30 @@ export default function App13() {
   const [div, setDiv] = useState(0);
 
   useEffect(() => {
-    setAdd(100 + Number(num));
-    setSub(100 - Number(num));
-    setMul(100 * Number(num));
-    setDiv(num !== 0 ? 100 / Number(num) : "undefined"); // avoid divide by zero
-  }, [num]); // runs when num changes
+    const n = Number(num);
+    setAdd(100 + n);
+    setSub(100 - n);
+    setMul(100 * n);
+    setDiv(n !== 0 ? (100 / n).toFixed(2) : "Undefined");
+  }, [num]);
 
   return (
-    <div>
-      <h1>App13 - Assignment</h1>
-      <input
-        type="number"
-        value={num}
-        onChange={(e) => setNum(e.target.value)}
-        placeholder="Enter a number"
-      />
+    <div className="container">
+      <h2>App13 - Assignment</h2>
 
-      <div style={{ marginTop: "20px" }}>
-        <p><strong>Addition:</strong> 100 + {num} = {add}</p>
-        <p><strong>Subtraction:</strong> 100 - {num} = {sub}</p>
-        <p><strong>Multiplication:</strong> 100 * {num} = {mul}</p>
-        <p><strong>Division:</strong> 100 / {num} = {div}</p>
+      <div className="grid">
+        <div className="box">Addition<br />100 + {num} = {add}</div>
+        <div className="box">Subtraction<br />100 - {num} = {sub}</div>
+        <div className="box">Multiplication<br />100 × {num} = {mul}</div>
+        <div className="box">Division<br />100 ÷ {num} = {div}</div>
+
+        <input
+          type="number"
+          placeholder="Enter a number"
+          value={num}
+          onChange={(e) => setNum(e.target.value)}
+          className="input"
+        />
       </div>
     </div>
   );

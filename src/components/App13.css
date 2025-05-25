@@ -1,0 +1,37 @@
+.container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 100px);
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+  width: 600px;
+  margin: auto;
+}
+
+.box {
+  border: 2px solid black;
+  padding: 10px;
+  width: 160px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  background-color: #f2f2f2;
+}
+
+.input {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  width: 120px;
+  height: 30px;
+  font-size: 16px;
+  text-align: center;
+}
