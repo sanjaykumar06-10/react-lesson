@@ -8,31 +8,27 @@ export default function App10() {
 
   const [cart, setCart] = useState({});
 
-  // Add to cart
-  const addToCart = (id) => {
-    setCart({ ...cart, [id]: (cart[id] || 0) + 1 });
-  };
+  function addToCart(id) {
+    cart[id] = (cart[id] || 0) + 1;
+    setCart({ ...cart });
+  }
 
-  // Increase quantity
-  const increase = (id) => {
-    setCart({ ...cart, [id]: cart[id] + 1 });
-  };
+  function increase(id) {
+    cart[id]++;
+    setCart({ ...cart });
+  }
 
-  // Decrease quantity
-  const decrease = (id) => {
+  function decrease(id) {
     if (cart[id] === 1) {
-      const newCart = { ...cart };
-      delete newCart[id];
-      setCart(newCart);
+      delete cart[id];
     } else {
-      setCart({ ...cart, [id]: cart[id] - 1 });
+      cart[id]--;
     }
-  };
+    setCart({ ...cart });
+  }
 
   return (
     <div>
-      <h1>App10 Assignment</h1>
-
       <h2>Products</h2>
       {products.map((p) => (
         <div key={p.id}>
@@ -47,19 +43,18 @@ export default function App10() {
       {Object.keys(cart).length === 0 ? (
         <p>Cart is empty</p>
       ) : (
-        <ul>
-          {Object.entries(cart).map(([id, qty]) => {
-            const product = products.find((p) => p.id == id);
-            return (
-              <li key={id}>
-                {product.name} - ${product.price} -{" "}
-                <button onClick={() => decrease(product.id)}>-</button> {qty}{" "}
-                <button onClick={() => increase(product.id)}>+</button> = $
-                {product.price * qty}
-              </li>
-            );
-          })}
-        </ul>
+        Object.keys(cart).map((id) => {
+          const product = products.find((p) => p.id == id);
+          return (
+            <p key={id}>
+              {product.name} - ${product.price} -{" "}
+              <button onClick={() => decrease(product.id)}>-</button>{" "}
+              {cart[id]}{" "}
+              <button onClick={() => increase(product.id)}>+</button> = $
+              {product.price * cart[id]}
+            </p>
+          );
+        })
       )}
     </div>
   );
