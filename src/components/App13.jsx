@@ -23,9 +23,6 @@ export default function App13() {
       <div className="grid">
         <div className="box">Addition<br />100 + {num} = {add}</div>
         <div className="box">Subtraction<br />100 - {num} = {sub}</div>
-        <div className="box">Multiplication<br />100 × {num} = {mul}</div>
-        <div className="box">Division<br />100 ÷ {num} = {div}</div>
-
         <input
           type="number"
           placeholder="Enter a number"
@@ -33,6 +30,8 @@ export default function App13() {
           onChange={(e) => setNum(e.target.value)}
           className="input"
         />
+        <div className="box">Multiplication<br />100 × {num} = {mul}</div>
+        <div className="box">Division<br />100 ÷ {num} = {div}</div>
       </div>
     </div>
   );
