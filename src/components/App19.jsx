@@ -4,22 +4,29 @@ export default function App19() {
   const [runs, setRuns] = useState(0);
   const [wickets, setWickets] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     if (wickets >= 10) {
       setGameOver(true);
+      setMessage("Game Over!");
     }
   }, [wickets]);
 
   function addRun() {
     if (!gameOver) {
       setRuns(runs + 1);
+      setMessage("Well Done!");
     }
   }
 
   function addWicket() {
     if (!gameOver) {
-      setWickets(wickets + 1);
+      const newWickets = wickets + 1;
+      setWickets(newWickets);
+      if (newWickets < 10) {
+        setMessage("Better Luck Next Time!");
+      }
     }
   }
 
@@ -32,12 +39,10 @@ export default function App19() {
 
   return (
     <div style={{ textAlign: "center", fontFamily: "Arial" }}>
-      
       <div>
         <h1>Cricket Scoreboard</h1>
       </div>
 
-   
       <div
         style={{
           display: "flex",
@@ -46,7 +51,7 @@ export default function App19() {
           marginTop: "20px",
         }}
       >
-        
+       
         <div style={boxStyle}>
           <h2>Runs: {runs}</h2>
           <button onClick={addRun}>Run</button>
@@ -56,13 +61,7 @@ export default function App19() {
 
        
         <div style={boxStyle}>
-          {!gameOver && runs > 0 && <p>Well Done!</p>}
-          {gameOver && (
-            <>
-              <p>Better Luck Next Time!</p>
-              <p><strong>Game Over!</strong></p>
-            </>
-          )}
+          <p>{message}</p>
         </div>
       </div>
     </div>
