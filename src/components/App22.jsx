@@ -15,7 +15,7 @@ export default function App22() {
   }, []);
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+    <div>
       <h2>Weather Report</h2>
       <p>Current Weather: {weather ? weather : 'Loading...'}</p>
     </div>
