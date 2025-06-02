@@ -7,7 +7,7 @@ export default function App22() {
   useEffect(() => {
     axios.get('http://localhost:8080/weather')
       .then(response => {
-        setWeather(response.send); // "31degree"
+        setWeather(response.data); // "31degree"
       })
       .catch(error => {
         console.error('Error fetching weather:', error);
